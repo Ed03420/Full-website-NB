@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Nine Ball Shop - Coming Soon</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body {
+    width:100%; height:100%;
+    font-family:'Poppins', sans-serif;
+    background:#0e0e0e; color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    scroll-behavior:smooth;
+  }
+
+  h1 {
+    font-size:3rem;
+    color:#c7a86c;
+    margin-bottom:1rem;
+    letter-spacing:1px;
+  }
+
+  p {
+    font-size:1.2rem;
+    color:#ddd;
+    margin-bottom:2rem;
+    line-height:1.6;
+  }
+
+  .notify-btn {
+    display: inline-block;
+    background: #c7a86c;
+    color: #000;
+    padding: 0.85rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  .notify-btn:hover {
+    background: #fff;
+    color: #c7a86c;
+    box-shadow: 0 0 15px #c7a86c;
+    transform: scale(1.05);
+  }
+
+  /* Optional subtle animation */
+  .coming-soon-container {
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #111, #1a1a1a);
+    box-shadow: 0 0 30px rgba(199,168,108,0.2);
+  }
+
+  body::after {
+    content: " ";
+    position: fixed;
+    inset:0;
+    background: url('cover-tatto.jpg') center/cover no-repeat;
+    opacity:0.1;
+    z-index:-1;
+  }
+</style>
+</head>
+<body>
+
+<div class="coming-soon-container">
+  <h1>✨ Coming Soon ✨</h1>
+  <p>We’re brewing something exciting for you! New products and collections are on the way at <strong>The Nine Ball Shop</strong>.</p>
+  <a href="index.html" class="notify-btn">Back to Home</a>
+</div>
+
+</body>
+</html>
