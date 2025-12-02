@@ -152,25 +152,30 @@ function checkFormFields() {
 renderCart();
 checkFormFields();
 
-let stripe; // will hold Stripe instance
+let stripe;
 
-// Fetch publishable key then wire the button
 async function initStripe() {
   try {
     const res = await fetch("/api/config");
-    const json = await res.json();
-    if (!res.ok) throw new Error(json.error || "Failed to get config");
-    const publishableKey = json.publishableKey;
+    const { publishableKey } = await res.json();
     if (!publishableKey) throw new Error("No publishable key returned");
 
-    // Load Stripe JS dynamically
-    const s = await loadStripeJs();
-    stripe = s(publishableKey);
+    const script = document.createElement("script");
+    script.src = "https://js.stripe.com/v3/";
+    script.async = true;
+    document.head.appendChild(script);
+    script.onload = () => {
+      stripe = Stripe(publishableKey);
+    };
+    script.onerror = () => console.error("Stripe JS failed to load");
   } catch (err) {
     console.error("Stripe init error:", err);
-    // Keep button disabled
   }
 }
+
+// call this once on page load
+initStripe();
+
 
 // helper to load stripe js and return window.Stripe initializer
 function loadStripeJs() {

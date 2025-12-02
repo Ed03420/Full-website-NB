@@ -63,9 +63,9 @@ app.post('/api/create-checkout', async (req, res) => {
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 // /api/config.js
 export default function handler(req, res) {
-  const publishable = process.env.STRIPE_PUBLIC_KEY || process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY;
+  const publishable = process.env.STRIPE_PUBLIC_KEY; // must be set in Vercel
   if (!publishable) {
-    return res.status(500).json({ error: "pk_live_51STjqxRwaDEwT9Ba2sRi10Y9nuE7OezyPrqwchVY76x8E3uZ3CkscP1idIYje3bb2NlvttV9WFZRU4ssKQVerx2Q00NwpGB4ZC" });
+    return res.status(500).json({ error: "No STRIPE_PUBLIC_KEY configured" });
   }
   res.status(200).json({ publishableKey: publishable });
 }
@@ -77,7 +77,8 @@ import { buffer } from "micro";
 
 export const config = { api: { bodyParser: false } };
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = Stripe("pk_live_51STjqxRwaDEwT9Ba2sRi10Y9nuE7OezyPrqwchVY76x8E3uZ3CkscP1idIYje3bb2NlvttV9WFZRU4ssKQVerx2Q00NwpGB4ZC");
+
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).end("Method Not Allowed");
