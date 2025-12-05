@@ -371,6 +371,20 @@ section p { font-size:1.1rem; line-height:1.6; opacity:0.85; }
   opacity: 0;
   transition: font-size 0.3s ease, opacity 0.3s ease;
 }
+/* Shrink nav buttons on scroll for mobile */
+#mainHeader.shrink .nav-links a.nav-btn {
+  transform: scale(0.8);       /* Shrinks buttons to 80% */
+  padding: 0.35rem 0.7rem;     /* Adjust padding to fit */
+  font-size: 0.9rem;           /* Slightly smaller font */
+  transition: transform 0.3s ease, padding 0.3s ease, font-size 0.3s ease;
+}
+
+@media (max-width: 480px) {
+  #mainHeader.shrink .nav-links {
+    gap: 0.5rem;               /* Reduce space between buttons */
+    flex-wrap: wrap;            /* Allow wrapping if needed */
+  }
+}
 
 .shop-btn {
   display: inline-block;
