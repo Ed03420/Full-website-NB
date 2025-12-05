@@ -360,6 +360,17 @@ section p { font-size:1.1rem; line-height:1.6; opacity:0.85; }
 @media (max-width: 768px) { .branches, .shop-preview { max-width:90%; } .branch, .shop-item { flex:1 1 100%; max-width:100%; min-height:220px; } .branch:nth-child(3), .shop-item:nth-child(3) { margin:0 auto; } .carousel-item { width:150px; } .carousel-item img { height:120px; } .carousel-btn { font-size:1.5rem; padding:0.3rem 0.8rem; } }
 @media (max-width: 480px) { .carousel-item { width:120px; } .carousel-item img { height:100px; } }
 
+#mainHeader.shrink .brand img {
+  height: 0;           /* Shrinks the logo to zero */
+  opacity: 0;          /* Fade out */
+  transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+#mainHeader.shrink .centered-header h2 {
+  font-size: 0;        /* Hide the text as well */
+  opacity: 0;
+  transition: font-size 0.3s ease, opacity 0.3s ease;
+}
 
 .shop-btn {
   display: inline-block;
